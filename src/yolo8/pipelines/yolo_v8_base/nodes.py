@@ -6,6 +6,7 @@ from typing import Dict, Any
 import logging
 import random
 import numpy as np
+from ultralytics import YOLO
 from yolo8.utils.parse_label_json import LabelParser
 import matplotlib.pyplot as plt
 logger = logging.getLogger(__name__)
@@ -198,5 +199,6 @@ def split_dataset(yolo_dataset_input, parameters: Dict[str, Any]):
         raise
 
 # fine tune yolo v8 seg model with the dataset
-def fine_tune_yolo_v8_seg(yolo_dataset_input):
-    pass
+def fine_tune_yolo_v8_seg(yolo_dataset_input, parameters: Dict[str, Any]):
+    model = YOLO(parameters['model_name'])
+    return model

@@ -5,6 +5,7 @@
 # Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
 
 yolo_v8_fine_tune:
+  model_name: yolov8n-seg.pt
   train_ratio: 0.7
   val_ratio: 0.15
   test_ratio: 0.15
