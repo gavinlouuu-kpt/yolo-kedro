@@ -1,0 +1,11 @@
+# This is a boilerplate parameters config generated for pipeline 'yolo_v8_base'
+# using Kedro 0.19.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
+
+yolo_v8_fine_tune:
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  random_state: 42

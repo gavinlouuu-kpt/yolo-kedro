@@ -1,0 +1,10 @@
+paa_12_1:
+  # partitioned dataset in kedro framework
+  type: partitions.PartitionedDataset
+  path: data/01_raw/paa_12_1 # path to the location of partitions
+  filename_suffix: ".png"
+  dataset: pillow.ImageDataset # shorthand notation for the dataset which will handle individual partitions
+
+paa_12_1_annotations:
+  type: json.JSONDataset
+  filepath: data/01_raw/paa_12_1/2024_11_21_paa_12.json # filepath to the location of json annotations
