@@ -8,3 +8,21 @@ paa_12_1:
 paa_12_1_annotations:
   type: json.JSONDataset
   filepath: data/01_raw/paa_12_1/2024_11_21_paa_12.json # filepath to the location of json annotations
+
+debug_masks_images:
+  type: partitions.PartitionedDataset
+  path: data/02_intermediate/debug_masks_images/
+  dataset: pillow.ImageDataset
+  filename_suffix: ".png"
+
+train:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/paa_12_1/train.pkl
+
+val:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/paa_12_1/val.pkl
+
+test:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/paa_12_1/test.pkl

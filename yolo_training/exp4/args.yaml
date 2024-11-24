@@ -1,0 +1,315 @@
+task: segment
+mode: train
+model: yolov8n-seg.pt
+data:
+  path: ./data
+  train: "{'image_25': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D510>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_23': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D690>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_19': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DB70>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_1': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F880>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_10': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E4D0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_45': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DE10>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_26': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DDB0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_15': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E050>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_29': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E1D0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_16': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E230>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_31': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E410>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_21': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E470>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_2': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D660>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_9': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FBE0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_39': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F3D0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_38': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FD60>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_0': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E5F0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_24': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97EB90>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_35': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E200>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_6': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E650>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_43': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F9A0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_18': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F730>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_33': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E890>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_49': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FDF0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_41': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D840>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_30': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FAC0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_28': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F040>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_20': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F340>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_22': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DFC0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_42': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97EC20>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_46': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E3E0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_36': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D900>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_32': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97EE60>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_44': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E680>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_3': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DD20>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)}}"
+  val: "{'image_50': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D990>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_48': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D750>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_8': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F250>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_27': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FAF0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_37': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F010>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_11': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DF90>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_34': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97ED70>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_12': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FB20>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)}}"
+  test: "{'image_14': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97EAD0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_4': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97D6F0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_5': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97FA00>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_17': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97F4F0>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_47': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E290>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_7': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DD50>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_13': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97DD80>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)},\
+    \ 'image_40': {'image': <PIL.Image.Image image mode=L size=704x200 at 0x1BB1A97E380>,\
+    \ 'mask': array([[0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0],\n \
+    \      [0, 0, 0, ..., 0, 0, 0],\n       ...,\n       [0, 0, 0, ..., 0, 0, 0],\n\
+    \       [0, 0, 0, ..., 0, 0, 0],\n       [0, 0, 0, ..., 0, 0, 0]], dtype=uint8)}}"
+  nc: 1
+  names:
+  - bead
+epochs: 100
+time: null
+patience: 50
+batch: 16
+imgsz: 640
+save: true
+save_period: -1
+cache: false
+device: cpu
+workers: 8
+project: yolo_training
+name: exp4
+exist_ok: false
+pretrained: true
+optimizer: auto
+verbose: true
+seed: 0
+deterministic: true
+single_cls: false
+rect: false
+cos_lr: false
+close_mosaic: 10
+resume: false
+amp: true
+fraction: 1.0
+profile: false
+freeze: null
+multi_scale: false
+overlap_mask: true
+mask_ratio: 4
+dropout: 0.0
+val: true
+split: val
+save_json: false
+save_hybrid: false
+conf: null
+iou: 0.7
+max_det: 300
+half: false
+dnn: false
+plots: true
+source: null
+vid_stride: 1
+stream_buffer: false
+visualize: false
+augment: false
+agnostic_nms: false
+classes: null
+retina_masks: false
+embed: null
+show: false
+save_frames: false
+save_txt: false
+save_conf: false
+save_crop: false
+show_labels: true
+show_conf: true
+show_boxes: true
+line_width: null
+format: torchscript
+keras: false
+optimize: false
+int8: false
+dynamic: false
+simplify: true
+opset: null
+workspace: 4
+nms: false
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+box: 7.5
+cls: 0.5
+dfl: 1.5
+pose: 12.0
+kobj: 1.0
+label_smoothing: 0.0
+nbs: 64
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 1.0
+mixup: 0.0
+copy_paste: 0.0
+copy_paste_mode: flip
+auto_augment: randaugment
+erasing: 0.4
+crop_fraction: 1.0
+cfg: null
+tracker: botsort.yaml
+save_dir: yolo_training\exp4

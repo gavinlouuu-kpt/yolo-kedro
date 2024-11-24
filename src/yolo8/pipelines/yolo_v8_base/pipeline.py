@@ -17,7 +17,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             convert_rle_to_mask,
             inputs="paa_12_1_annotations",
-            outputs="masks",
+            outputs=["masks", "debug_masks_images"],
         ),
         node(
             create_yolo_dataset,
@@ -27,11 +27,11 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             split_dataset,
             inputs=["yolo_dataset", "params:yolo_v8_fine_tune"],
-            outputs="split_dataset",
+            outputs=["train", "val", "test"],
         ),
         node(
             fine_tune_yolo_v8_seg,
-            inputs=["split_dataset", "params:yolo_v8_fine_tune"],
+            inputs=["train", "val", "test", "params:yolo_v8_fine_tune"],
             outputs="fine_tuned_model",
         )
     ])

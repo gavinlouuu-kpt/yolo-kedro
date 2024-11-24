@@ -9,6 +9,12 @@ import numpy as np
 from ultralytics import YOLO
 from yolo8.utils.parse_label_json import LabelParser
 import matplotlib.pyplot as plt
+from PIL import Image
+import tempfile
+import os
+import pickle
+import yaml
+
 logger = logging.getLogger(__name__)
 
 # load lazy loading partitioned data to memory
@@ -71,20 +77,31 @@ def convert_rle_to_mask(annotations_input):
         annotations_input: List of annotation dictionaries in Label Studio JSON format
     
     Returns:
-        Dict[str, np.ndarray]: Dictionary mapping image numbers to binary masks
+        Tuple[Dict[str, np.ndarray], List[np.ndarray]]: Dictionary mapping image numbers to binary masks,
+        and a list of debug visualization arrays
     """
     try:
         # Use LabelParser to convert annotations to masks
         masks = LabelParser.parse_json(annotations_input)
         logger.info(f"Successfully converted {len(masks)} annotations to masks")
-        # log 5 random keys
         logger.info(f"5 random keys: {random.sample(list(masks.keys()), 5)}")
-        # # debug plot 5 random masks
-        # for img_num, mask in random.sample(list(masks.items()), 5):
-        #     plt.imshow(mask)
-        #     plt.title(f"Mask for image {img_num}")
-        #     plt.show()
-        return masks
+        
+        # Create debug visualizations
+        debug_images = {}
+        for idx, (img_num, mask) in enumerate(random.sample(list(masks.items()), 5)):
+            fig = plt.figure()
+            plt.imshow(mask)
+            plt.title(f"Mask for image {img_num}")
+            # Convert plot to numpy array
+            fig.canvas.draw()
+            debug_img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+            debug_img = debug_img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            # Convert numpy array to PIL Image
+            debug_img = Image.fromarray(debug_img)
+            debug_images[f"debug_{idx}"] = debug_img
+            plt.close(fig)
+            
+        return masks, debug_images
     except Exception as e:
         logger.error(f"Error converting annotations to masks: {str(e)}")
         raise
@@ -180,25 +197,100 @@ def split_dataset(yolo_dataset_input, parameters: Dict[str, Any]):
         test_keys = all_keys[val_end:]
         
         # Create split datasets
-        split_datasets = {
-            'train': {k: yolo_dataset_input[k] for k in train_keys},
-            'val': {k: yolo_dataset_input[k] for k in val_keys},
-            'test': {k: yolo_dataset_input[k] for k in test_keys}
-        }
+        train = {k: yolo_dataset_input[k] for k in train_keys}
+        val = {k: yolo_dataset_input[k] for k in val_keys}
+        test = {k: yolo_dataset_input[k] for k in test_keys}
+        
         
         # Log split sizes
         logger.info(f"Dataset split sizes:")
-        logger.info(f"Training: {len(split_datasets['train'])} samples")
-        logger.info(f"Validation: {len(split_datasets['val'])} samples")
-        logger.info(f"Test: {len(split_datasets['test'])} samples")
+        logger.info(f"Training: {len(train)} samples")
+        logger.info(f"Validation: {len(val)} samples")
+        logger.info(f"Test: {len(test)} samples")
         
-        return split_datasets
+        return train, val, test
         
     except Exception as e:
         logger.error(f"Error splitting dataset: {str(e)}")
         raise
 
-# fine tune yolo v8 seg model with the dataset
-def fine_tune_yolo_v8_seg(yolo_dataset_input, parameters: Dict[str, Any]):
-    model = YOLO(parameters['model_name'])
-    return model
+def fine_tune_yolo_v8_seg(train_input, val_input, test_input, parameters: Dict[str, Any]):
+    """Fine-tune YOLOv8 segmentation model on custom dataset."""
+    try:
+        # Initialize model
+        model = YOLO(parameters['model_name'])
+        
+        # Create temporary directory
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create directory structure
+            for split in ['train', 'val', 'test']:
+                os.makedirs(os.path.join(temp_dir, split, 'images'), exist_ok=True)
+                os.makedirs(os.path.join(temp_dir, split, 'labels'), exist_ok=True)
+            
+            # Copy data to appropriate directories
+            # Assuming train_input, val_input, test_input are dictionaries with 'image' and 'mask' keys
+            for idx, img_data in enumerate(train_input.values()):
+                img_path = os.path.join(temp_dir, 'train', 'images', f'{idx}.jpg')
+                mask_path = os.path.join(temp_dir, 'train', 'labels', f'{idx}.txt')
+                img_data['image'].save(img_path)  # Save image
+                # Convert mask to YOLO format and save
+                # ... (mask conversion code here)
+            
+            for idx, img_data in enumerate(val_input.values()):
+                img_path = os.path.join(temp_dir, 'val', 'images', f'{idx}.jpg')
+                mask_path = os.path.join(temp_dir, 'val', 'labels', f'{idx}.txt')
+                img_data['image'].save(img_path)
+                # Convert mask to YOLO format and save
+                # ... (mask conversion code here)
+            
+            for idx, img_data in enumerate(test_input.values()):
+                img_path = os.path.join(temp_dir, 'test', 'images', f'{idx}.jpg')
+                mask_path = os.path.join(temp_dir, 'test', 'labels', f'{idx}.txt')
+                img_data['image'].save(img_path)
+                # Convert mask to YOLO format and save
+                # ... (mask conversion code here)
+            
+            # Create data.yaml configuration file
+            data_yaml = {
+                'path': temp_dir,  # Root directory
+                'train': os.path.join('train', 'images'),  # Training images path
+                'val': os.path.join('val', 'images'),      # Validation images path
+                'test': os.path.join('test', 'images'),    # Test images path
+                'nc': parameters.get('num_classes', 1),
+                'names': parameters.get('class_names', ['object'])
+            }
+            
+            # Save data.yaml configuration
+            data_yaml_path = os.path.join(temp_dir, 'data.yaml')
+            with open(data_yaml_path, 'w') as f:
+                yaml.safe_dump(data_yaml, f)
+            
+            logger.info(f"Dataset structure created at {temp_dir}")
+            logger.info(f"Training images: {len(os.listdir(os.path.join(temp_dir, 'train', 'images')))}")
+            logger.info(f"Validation images: {len(os.listdir(os.path.join(temp_dir, 'val', 'images')))}")
+            logger.info(f"Test images: {len(os.listdir(os.path.join(temp_dir, 'test', 'images')))}")
+            
+            # Prepare training arguments
+            train_args = {
+                'data': data_yaml_path,  # Path to data.yaml
+                'epochs': parameters.get('epochs', 100),
+                'imgsz': parameters.get('imgsz', 640),
+                'batch': parameters.get('batch_size', 16),
+                'device': parameters.get('device', 'cuda'),
+                'val': True,
+                'save': True,
+                'save_period': parameters.get('save_period', -1),
+                'patience': parameters.get('patience', 50),
+                'project': parameters.get('project', 'yolo_training'),
+                'name': parameters.get('run_name', 'exp'),
+            }
+
+            # Train the model
+            results = model.train(**train_args)
+            
+            logger.info(f"Training completed. Results: {results}")
+            return model
+
+    except Exception as e:
+        logger.error(f"Error in fine-tuning YOLO model: {str(e)}")
+        raise

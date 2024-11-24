@@ -10,3 +10,14 @@ yolo_v8_fine_tune:
   val_ratio: 0.15
   test_ratio: 0.15
   random_state: 42
+  # Added training parameters
+  epochs: 100
+  imgsz: 640
+  batch_size: 16
+  device: cpu
+  save_period: -1
+  patience: 50
+  project: yolo_training
+  run_name: exp
+  num_classes: 1
+  class_names: ["bead"]
